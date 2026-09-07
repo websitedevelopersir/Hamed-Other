@@ -46,10 +46,24 @@
 - Original artifact: `internet-tv-panel-v1.2.6.zip`.
 - Original size: `17,806,252 bytes`.
 - Original SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`.
+- Extracted release contains `1,768` files; most extra files belong to bundled third-party Dason assets.
+- Exact custom/application source identified as `37` files / `380,379` uncompressed bytes.
 - Secret scan found no live credentials; `config.example.php` contains placeholders only.
-- A repacked development-source ZIP was tested for connector transfer; the remote result was truncated, detected by byte-size mismatch and removed immediately.
-- Migration policy changed to readable file-by-file source under `source/app/` so future development can inspect the exact code directly in Git.
-- Core/Auth/Security/Database/Settings/CSRF/Crypto/Helpers/View sources transferred.
-- Stream Engine abstraction, MediaProbe, Audit, PlayerResolver and ParsGreen/SMS service sources transferred.
-- Full 15-table `database/schema.sql` transferred.
-- Complete original 17.8 MB release ZIP is not marked uploaded until byte size and SHA-256 can be preserved exactly.
+- Direct large binary transfer was tested, detected as truncated by byte-size mismatch, and removed instead of being accepted.
+- Critical files were also migrated into a readable convenience tree under `source/app/`.
+- PlayerResolver and Schema byte-level mismatches caused by manual transfer were detected and corrected; comments/whitespace are treated as integrity-relevant when claiming exact copies.
+
+## 2026-09-07 — Complete custom source correction
+
+- User correctly reported that the earlier source transfer was incomplete.
+- A complete custom/application archive was generated from the verified v1.2.6 tree containing exactly `37/37` project files.
+- Complete custom archive size: `70,112 bytes`.
+- Complete custom archive SHA-256: `2d50e6915c31e24012fc53b32227d4ab80190a6d12280983eb497eed942fc298`.
+- Archive split into `9` decoded chunks to avoid connector truncation: eight 8,000-byte chunks plus one 6,112-byte chunk.
+- All `9/9` Base64 Part files were committed to `source/full-custom-source.parts/`.
+- Every remote Part was verified against its expected Base64 text size and Git blob SHA; all matched exactly.
+- `PARTS_MANIFEST.sha256` records decoded SHA-256, decoded size and Git blob SHA for every Part.
+- `REBUILD.md` records deterministic reconstruction steps for Linux/macOS and PowerShell.
+- `SOURCE_MANIFEST.sha256` records the expected SHA-256 of all 37 individual custom source files.
+- Status is now: **complete custom/application source 37/37 available and verifiable in Git**.
+- Status is NOT: full original 17.8MB deployable release uploaded. The original Dason-bundled release remains tracked by size/SHA metadata and must not be called uploaded until a byte-identical binary is stored.
