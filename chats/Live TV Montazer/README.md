@@ -13,33 +13,62 @@
 
 پنل مدیریت تلویزیون اینترنتی چندشبکه‌ای با آرشیو رسانه، ورودی زنده، جدول پخش خطی، پخش فوری، Player عمومی، API، مدیریت کاربران و احراز هویت، Ticker/تبلیغات/اوقات شرعی و آمادگی اتصال به Media Server واقعی.
 
-## وضعیت فعلی
+## وضعیت Source
 
-نسخه `1.2.6` جدیدترین نسخه پیدا و از داخل فایل واقعی بررسی شده است. برای توسعه بعدی، `VERSION` داخل سورس مرجع نهایی نسخه است؛ تیتر نسخه در بعضی فایل‌های README/Manifest قدیمی مانده و نباید مبنای انتخاب نسخه قرار گیرد.
+سورس اختصاصی برنامه اکنون **کامل 37/37** داخل Git ثبت شده و قابل بازسازی Byte-for-byte است.
 
-قبل از هر تغییر این فایل‌ها خوانده شوند:
+مسیر مرجع کامل:
 
-- `PROJECT_CONTEXT.md`
-- `CHANGELOG.md`
-- `context/DECISIONS.md`
-- `docs/ARCHITECTURE.md`
-- `docs/DEVELOPMENT_GUIDE.md`
-- `docs/KNOWN_ISSUES.md`
+`source/full-custom-source.parts/`
 
-## سورس قابل توسعه در Git
+مشخصات Source ZIP بازسازی‌شده:
 
-مرجع توسعه خوانا در مسیر زیر نگهداری می‌شود:
+- Size: `70,112 bytes`
+- SHA-256: `2d50e6915c31e24012fc53b32227d4ab80190a6d12280983eb497eed942fc298`
+- Files: `37/37 custom/application files`
+- Parts: `9/9`, verified by size + Git blob SHA
 
-`source/app/`
+راهنمای بازسازی:
 
-کدهای Core، Security، Auth، Database، Settings، API، PlayerResolver، ParsGreen/SMS، Schema و فایل‌های اصلی پروژه از نسخه واقعی 1.2.6 به این مسیر منتقل می‌شوند. مجموعه حجیم Third-party Dason و `public/uploads/` جزء سورس اختصاصی پروژه محسوب نمی‌شوند.
+`source/full-custom-source.parts/REBUILD.md`
+
+Manifest:
+
+- `source/full-custom-source.parts/PARTS_MANIFEST.sha256`
+- `source/SOURCE_MANIFEST.sha256`
+
+`source/app/` یک درخت خوانا برای دسترسی سریع به فایل‌های مهم است؛ معیار کامل بودن Source، آرشیو 37/37 بالاست.
+
+## نکته Third-party
+
+دو مسیر زیر عمداً جزو Custom/Application Source نیستند:
+
+- `public/assets/dason/` — Third-party Dason assets
+- `public/uploads/` — Runtime/User uploads
+
+بنابراین 37/37 یعنی **تمام کد اختصاصی پروژه**؛ Release اصلی 1,768 فایل دارد چون Dason حجیم نیز داخل آن است.
 
 ## Release اصلی
 
-نسخه کامل اصلی **فقط** زمانی معتبر است که دقیقاً با مشخصات زیر تطبیق کند:
+نسخه کامل اصلی فقط زمانی معتبر است که دقیقاً با این مشخصات تطبیق کند:
 
 - File: `internet-tv-panel-v1.2.6.zip`
 - Size: `17,806,252 bytes`
 - SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`
 
-وضعیت انتقال Binary کامل در `release/RELEASE_INFO.md` ثبت شده است. هیچ ZIP ناقص یا Repacked نباید به‌عنوان Release اصلی معرفی شود.
+Binary کامل 17.8MB هنوز به‌صورت یک فایل یکپارچه در Git منتقل نشده و نباید Uploaded اعلام شود. وضعیت دقیق در `release/RELEASE_INFO.md` ثبت شده است.
+
+## قبل از توسعه بعدی
+
+به ترتیب بخوان:
+
+1. `VERSION`
+2. `PROJECT_CONTEXT.md`
+3. `context/DECISIONS.md`
+4. `CHANGELOG.md`
+5. `docs/ARCHITECTURE.md`
+6. `docs/DEVELOPMENT_GUIDE.md`
+7. `docs/KNOWN_ISSUES.md`
+8. `source/SOURCE_STATUS.md`
+
+برای توسعه، baseline فقط `v1.2.6` است.
