@@ -44,6 +44,12 @@
 - Exact chat folder created as `Live TV Montazer`.
 - Latest candidate verified by Library ordering and internal `VERSION`.
 - Original artifact: `internet-tv-panel-v1.2.6.zip`.
-- Original SHA-256 recorded: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`.
+- Original size: `17,806,252 bytes`.
+- Original SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`.
 - Secret scan found no live credentials; `config.example.php` contains placeholders only.
-- Custom application source was repackaged without bulky Dason third-party tree/runtime uploads for Git development access.
+- A repacked development-source ZIP was tested for connector transfer; the remote result was truncated, detected by byte-size mismatch and removed immediately.
+- Migration policy changed to readable file-by-file source under `source/app/` so future development can inspect the exact code directly in Git.
+- Core/Auth/Security/Database/Settings/CSRF/Crypto/Helpers/View sources transferred.
+- Stream Engine abstraction, MediaProbe, Audit, PlayerResolver and ParsGreen/SMS service sources transferred.
+- Full 15-table `database/schema.sql` transferred.
+- Complete original 17.8 MB release ZIP is not marked uploaded until byte size and SHA-256 can be preserved exactly.
