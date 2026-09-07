@@ -5,22 +5,47 @@
 1. Read `VERSION`.
 2. Read `PROJECT_CONTEXT.md` and `context/DECISIONS.md`.
 3. Read `CHANGELOG.md` and `docs/KNOWN_ISSUES.md`.
-4. Use v1.2.6 as the only baseline.
-5. Never infer the version from stale README/Manifest headings.
-6. Do not commit a real `config.php`, DB credentials, ParsGreen keys, stream tokens or live secrets.
+4. Read `source/SOURCE_STATUS.md`.
+5. Use v1.2.6 as the only baseline.
+6. Never infer the version from stale README/Manifest headings.
+7. Do not commit a real `config.php`, DB credentials, ParsGreen keys, stream tokens or live secrets.
 
-## Source baseline
+## Complete source baseline
 
-Development source is stored as readable files under:
+The complete custom/application source of v1.2.6 is stored under:
 
-`source/app/`
+`source/full-custom-source.parts/`
 
-This tree is copied from the verified v1.2.6 release. The large third-party Dason asset bundle and runtime/user uploads are intentionally not treated as custom application source:
+It contains all **37/37 custom application files**, split into 9 Base64-safe parts because large binary writes through the connector were previously truncated.
 
-- `public/assets/dason/` — third-party template/assets
-- `public/uploads/` — runtime/user files
+Reconstruct it using:
 
-The original complete release remains identified by the immutable size/SHA recorded in `release/RELEASE_INFO.md`.
+`source/full-custom-source.parts/REBUILD.md`
+
+Expected reconstructed ZIP:
+
+- Size: `70,112 bytes`
+- SHA-256: `2d50e6915c31e24012fc53b32227d4ab80190a6d12280983eb497eed942fc298`
+- Files: `37/37`
+
+Every Part has a decoded SHA-256, decoded size and Git blob SHA in:
+
+`source/full-custom-source.parts/PARTS_MANIFEST.sha256`
+
+The SHA-256 of every source file is also stored in:
+
+`source/SOURCE_MANIFEST.sha256`
+
+## Readable convenience tree
+
+`source/app/` contains directly readable copies of important files for quick inspection. It is a convenience tree, not the completeness authority. If a file is not directly expanded there, reconstruct the verified 37/37 source archive.
+
+## Excluded from custom/application source
+
+- `public/assets/dason/` — large third-party Dason template/assets
+- `public/uploads/` — runtime/user uploads
+
+These are not custom application code. The original full 17.8MB release includes Dason and is tracked separately by immutable release metadata.
 
 ## Critical regression checklist
 
@@ -55,14 +80,16 @@ After every change test:
 For a new version:
 
 1. Update the root `VERSION` first.
-2. Update both README and release manifest headings/sections so they no longer drift.
-3. Build the full ZIP from the complete project including required third-party runtime assets.
-4. Calculate SHA-256 and byte size.
-5. Update this Git folder's `VERSION`, `CHANGELOG.md` and `PROJECT_CONTEXT.md`.
-6. Replace/update the readable source tree under `source/app/`.
-7. Record the new full Release metadata under `release/`.
-8. Keep old versions through Git history, not as active baselines.
+2. Update README and release manifest headings/sections.
+3. Start from the verified complete custom source; do not rebuild from memory/snippets.
+4. Add required third-party Dason assets when producing the full deployable release.
+5. Build the full ZIP.
+6. Calculate SHA-256 and exact byte size.
+7. Update `VERSION`, `CHANGELOG.md`, `PROJECT_CONTEXT.md` and `SOURCE_MANIFEST.sha256`.
+8. Build a new complete custom-source archive and update all source Parts/manifest.
+9. Record the new full Release metadata under `release/`.
+10. Keep old versions through Git history, not as active baselines.
 
 ## Binary integrity rule
 
-Do not call a ZIP the canonical release unless both its byte size and SHA-256 match the recorded artifact. A truncated connector upload or a repacked development-source ZIP is not the original release.
+Never call an artifact canonical unless its size and SHA-256 match the recorded values. A truncated connector upload or a differently repacked ZIP is not the original release.
