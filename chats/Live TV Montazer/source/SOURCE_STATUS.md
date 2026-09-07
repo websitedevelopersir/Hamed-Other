@@ -1,66 +1,83 @@
 # Source Migration Status
 
+## نتیجه نهایی
+
+**Complete custom/application source: 37/37 files — VERIFIED**
+
+نسخه اختصاصی پروژه از v1.2.6 اکنون به‌طور کامل داخل Git قابل بازسازی است و هر ۹ Part از نظر اندازه و Git blob SHA با فایل محلی تطبیق داده شده است.
+
 ## Verified baseline
 
 - Version: `1.2.6`
-- Original release: `internet-tv-panel-v1.2.6.zip`
-- Original release size: `17,806,252 bytes`
-- Original release SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`
+- Original full release: `internet-tv-panel-v1.2.6.zip`
+- Original full release size: `17,806,252 bytes`
+- Original full release SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`
 
-## Readable source already stored in Git
+## Complete custom/application source archive
 
-The following v1.2.6 files have been copied exactly into `source/app/`:
+Path:
+
+`full-custom-source.parts/`
+
+- Parts: `9/9`
+- Part decoded sizes: `8 × 8,000 bytes + 1 × 6,112 bytes`
+- Reconstructed ZIP size: `70,112 bytes`
+- Reconstructed ZIP SHA-256: `2d50e6915c31e24012fc53b32227d4ab80190a6d12280983eb497eed942fc298`
+- Application/custom files in archive: `37/37`
+- Original uncompressed custom-source bytes: `380,379`
+
+Integrity details:
+
+- `full-custom-source.parts/PARTS_MANIFEST.sha256`
+- `full-custom-source.parts/REBUILD.md`
+- `SOURCE_MANIFEST.sha256`
+
+## What the complete custom archive contains
+
+تمام فایل‌های اختصاصی پروژه، شامل:
 
 - `.htaccess`
 - `VERSION`
-- `config.example.php`
-- `bootstrap.php`
-- `api.php`
-- `logout.php`
-- `NEXT-SERVER-PHASE.md`
-- `THIRD_PARTY_NOTICES.txt`
-- `app/Core/Database.php`
-- `app/Core/Settings.php`
-- `app/Core/Csrf.php`
-- `app/Core/Crypto.php`
-- `app/Core/View.php`
-- `app/Core/Auth.php`
-- `app/Core/Helpers.php`
-- `app/Core/Security.php`
-- `app/Services/Audit.php`
-- `app/Services/MediaProbe.php`
-- `app/Services/NullStreamEngine.php`
-- `app/Services/StreamEngineInterface.php`
-- `app/Services/PlayerResolver.php`
-- `app/Services/SmsService.php`
-- `database/schema.sql`
-
-## Remaining custom source not yet copied file-by-file
-
-These files are still represented by the verified local/original artifact and their expected SHA-256 values are recorded in `SOURCE_MANIFEST.sha256`:
-
 - `README-FA.md`
 - `RELEASE-MANIFEST.txt`
+- `THIRD_PARTY_NOTICES.txt`
+- `NEXT-SERVER-PHASE.md`
+- `bootstrap.php`
+- `index.php`
 - `ajax.php`
+- `api.php`
+- `login.php`
+- `logout.php`
+- `watch.php`
+- `install/index.php`
+- تمام `app/Core/*`
+- تمام `app/Services/*`
 - `app/Views/layouts/header.php`
 - `app/Views/layouts/footer.php`
-- `index.php`
-- `install/index.php`
-- `login.php`
-- `watch.php`
-- `public/assets/css/app.css`
-- `public/assets/css/dason-panel.css`
-- `public/assets/js/app.js`
-- `public/assets/js/dason-panel.js`
-- `public/assets/vendor/jalali/jalalidatepicker.min.css`
+- `database/schema.sql`
+- Custom CSS/JS
+- JalaliDatePicker CSS
 
-## Intentionally excluded from custom source migration
+## Readable source tree
 
-- `public/assets/dason/` — bundled third-party Dason asset tree
-- `public/uploads/` — runtime/user upload directory
+`source/app/` نیز برای خواندن سریع بخشی از فایل‌های مهم را مستقیم نگه می‌دارد. این درخت برای Convenience است و مرجع کامل بودن Source نیست.
 
-These exclusions do **not** change the identity of the original canonical release. The complete original artifact is defined only by the release size and SHA-256 above.
+اگر فایلی مستقیم زیر `source/app/` دیده نشد، نسخه دقیق آن داخل آرشیو کامل 37/37 در `full-custom-source.parts/` وجود دارد و با `REBUILD.md` بازسازی می‌شود.
+
+## Intentionally excluded from custom/application source
+
+این دو مسیر جزء کد اختصاصی پروژه نیستند و عمداً در Custom Source archive قرار نگرفته‌اند:
+
+- `public/assets/dason/` — bundled third-party Dason template/assets
+- `public/uploads/` — runtime/user uploads
+
+بنابراین عبارت **37/37 Complete** به معنی «تمام سورس اختصاصی برنامه» است، نه تمام 1,768 فایل Release که شامل Third-party Dason نیز می‌شود.
+
+## Original full release status
+
+فایل کامل اصلی 17.8MB هنوز به‌عنوان Binary یکپارچه در Git ثبت نشده است. مشخصات قطعی آن در `../release/RELEASE_INFO.md` ثبت شده و تا زمانی که Size + SHA-256 دقیقاً تطبیق نکند نباید Uploaded/Verified اعلام شود.
 
 ## Integrity rule
 
-Before treating a migrated source file as exact, compare it against `SOURCE_MANIFEST.sha256`. Before treating a ZIP as the canonical release, compare both byte size and SHA-256 with `release/RELEASE_INFO.md`.
+- Custom Source کامل فقط اگر ZIP بازسازی‌شده SHA-256 برابر `2d50e691...fc298` داشته باشد معتبر است.
+- Original Full Release فقط اگر Size=`17,806,252` و SHA-256=`f17da6d0...a0276` باشد معتبر است.
