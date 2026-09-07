@@ -11,14 +11,16 @@
 
 ## Source baseline
 
-`source/internet-tv-panel-v1.2.6-custom-source.zip`
+Development source is stored as readable files under:
 
-This is extracted from the verified v1.2.6 release and excludes only:
+`source/app/`
 
-- `public/assets/dason/` (large third-party template/assets)
-- `public/uploads/` (runtime/user files)
+This tree is copied from the verified v1.2.6 release. The large third-party Dason asset bundle and runtime/user uploads are intentionally not treated as custom application source:
 
-No application PHP, database schema, custom CSS/JS, Jalali CSS, installer, public player, API or documentation was intentionally removed from this custom-source archive.
+- `public/assets/dason/` — third-party template/assets
+- `public/uploads/` — runtime/user files
+
+The original complete release remains identified by the immutable size/SHA recorded in `release/RELEASE_INFO.md`.
 
 ## Critical regression checklist
 
@@ -52,10 +54,15 @@ After every change test:
 
 For a new version:
 
-1. update the root `VERSION` first;
-2. update both README and release manifest headings/sections so they no longer drift;
-3. build the full ZIP;
-4. calculate SHA-256 and size;
-5. update this Git folder's VERSION/CHANGELOG/PROJECT_CONTEXT;
-6. replace the current source archive;
-7. keep old versions only through Git history, not as active baselines.
+1. Update the root `VERSION` first.
+2. Update both README and release manifest headings/sections so they no longer drift.
+3. Build the full ZIP from the complete project including required third-party runtime assets.
+4. Calculate SHA-256 and byte size.
+5. Update this Git folder's `VERSION`, `CHANGELOG.md` and `PROJECT_CONTEXT.md`.
+6. Replace/update the readable source tree under `source/app/`.
+7. Record the new full Release metadata under `release/`.
+8. Keep old versions through Git history, not as active baselines.
+
+## Binary integrity rule
+
+Do not call a ZIP the canonical release unless both its byte size and SHA-256 match the recorded artifact. A truncated connector upload or a repacked development-source ZIP is not the original release.
