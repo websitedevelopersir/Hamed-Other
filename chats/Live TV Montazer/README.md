@@ -28,6 +28,18 @@
 
 ## سورس قابل توسعه در Git
 
-`source/internet-tv-panel-v1.2.6-custom-source.zip`
+مرجع توسعه خوانا در مسیر زیر نگهداری می‌شود:
 
-این آرشیو از همان نسخه 1.2.6 استخراج شده و **کد اختصاصی پروژه** را نگه می‌دارد؛ فقط مجموعه حجیم Third-party Dason assets و `public/uploads/` از آن حذف شده‌اند. نسخه کامل اصلی با SHA بالا در `release/RELEASE_INFO.md` ثبت شده است.
+`source/app/`
+
+کدهای Core، Security، Auth، Database، Settings، API، PlayerResolver، ParsGreen/SMS، Schema و فایل‌های اصلی پروژه از نسخه واقعی 1.2.6 به این مسیر منتقل می‌شوند. مجموعه حجیم Third-party Dason و `public/uploads/` جزء سورس اختصاصی پروژه محسوب نمی‌شوند.
+
+## Release اصلی
+
+نسخه کامل اصلی **فقط** زمانی معتبر است که دقیقاً با مشخصات زیر تطبیق کند:
+
+- File: `internet-tv-panel-v1.2.6.zip`
+- Size: `17,806,252 bytes`
+- SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`
+
+وضعیت انتقال Binary کامل در `release/RELEASE_INFO.md` ثبت شده است. هیچ ZIP ناقص یا Repacked نباید به‌عنوان Release اصلی معرفی شود.
