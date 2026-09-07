@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "chat_title": "Live TV Montazer",
+  "project": "Internet TV Panel",
+  "baseline": {
+    "version": "1.2.6",
+    "version_authority": "VERSION",
+    "platform": "standalone-php",
+    "php": ">=7.4",
+    "database": "MySQL/MariaDB InnoDB"
+  },
+  "custom_source": {
+    "status": "complete-verified",
+    "files": 37,
+    "uncompressed_bytes": 380379,
+    "archive_bytes": 70112,
+    "archive_sha256": "2d50e6915c31e24012fc53b32227d4ab80190a6d12280983eb497eed942fc298",
+    "storage": "source/full-custom-source.parts/",
+    "parts": 9,
+    "parts_manifest": "source/full-custom-source.parts/PARTS_MANIFEST.sha256",
+    "file_manifest": "source/SOURCE_MANIFEST.sha256",
+    "rebuild_guide": "source/full-custom-source.parts/REBUILD.md"
+  },
+  "original_release": {
+    "filename": "internet-tv-panel-v1.2.6.zip",
+    "bytes": 17806252,
+    "sha256": "f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276",
+    "extracted_files": 1768,
+    "binary_uploaded_as_single_file": false,
+    "metadata": "release/RELEASE_INFO.md"
+  },
+  "excluded_from_custom_source": [
+    "public/assets/dason/",
+    "public/uploads/"
+  ],
+  "dependency_policy": {
+    "composer_lock": false,
+    "npm_lock": false,
+    "do_not_invent_lockfiles": true,
+    "dason": "bundled-third-party-in-original-release",
+    "gsap": "3.13.0 runtime CDN in verified baseline",
+    "jalali_date_picker": "1.0.0 runtime JS CDN + local CSS in verified baseline",
+    "hls_js": "major @1 runtime CDN in verified baseline"
+  },
+  "development_rules": [
+    "Always start from version 1.2.6 until this lock is deliberately updated.",
+    "Never infer version from stale README or RELEASE-MANIFEST headings.",
+    "Never commit real config.php, DB credentials, ParsGreen secrets, stream keys or live passwords.",
+    "Do not call an artifact canonical unless byte size and SHA-256 match this lock.",
+    "Keep StreamEngineInterface boundary; do not couple the panel directly to FFmpeg/MediaMTX workers.",
+    "Preserve scheduler transaction, row-lock and overlap protections.",
+    "Preserve upload, SSRF, CSRF, session and rate-limit security hardening."
+  ]
+}
