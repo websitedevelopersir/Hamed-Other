@@ -1,27 +1,15 @@
 # Source
 
-## Development source archive
+سورس v1.2.6 به‌صورت فایل‌به‌فایل زیر `source/app/` منتقل می‌شود تا در توسعه بعدی مستقیماً از Git قابل خواندن باشد.
 
-`internet-tv-panel-v1.2.6-custom-source.zip`
+## Baseline
 
-SHA-256: `534ddea747a3cc02145e44a6ce46a12bba03ffe91ee2efba1455e63dbb3ba724`
+- Original release: `internet-tv-panel-v1.2.6.zip`
+- Original SHA-256: `f17da6d0b8837efe895ad74629e34dba3ae05e7c32fc7bec5954f984c0ca0276`
+- Original size: `17,806,252 bytes`
 
-Size: `110,217 bytes`
+## Scope
 
-This archive comes directly from the verified v1.2.6 source tree and excludes only the bulky third-party Dason asset directory and runtime uploads.
+کد اختصاصی پروژه، schema، installer، player و custom CSS/JS در این پوشه نگهداری می‌شوند. `public/assets/dason/` به‌عنوان مجموعه Third-party حجیم از سورس Git توسعه جدا نگه داشته می‌شود و مشخصات Release اصلی در `../release/RELEASE_INFO.md` ثبت است.
 
-Included application areas:
-
-- root PHP entry points
-- installer
-- database schema
-- `app/Core/*`
-- `app/Services/*`
-- layout views
-- custom CSS/JS
-- local Jalali CSS
-- README / manifest / third-party notices
-- `NEXT-SERVER-PHASE.md`
-- `config.example.php`
-
-The original full release metadata is under `../release/RELEASE_INFO.md`.
+هیچ ZIP ناقص یا Repacked به‌عنوان Release اصلی معتبر شناخته نمی‌شود.

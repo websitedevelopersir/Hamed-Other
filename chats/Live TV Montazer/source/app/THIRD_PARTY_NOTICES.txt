@@ -1,0 +1,23 @@
+Third-party components
+======================
+
+1) Dason Admin & Dashboard Template
+The Dason template assets in public/assets/dason/ originate from the template ZIP supplied by the user for this project. Use and redistribution remain subject to the license/terms that accompany the user's Dason template purchase/package. This project does not re-license those template assets.
+
+2) GSAP
+Project: GreenSock GSAP
+Version requested/integrated: 3.x (fixed CDN reference currently uses 3.13.0)
+Runtime source: jsDelivr
+License: GSAP Standard License. See https://gsap.com/standard-license/ for applicable terms.
+
+3) JalaliDatePicker
+Project: majidh1/JalaliDatePicker
+License: MIT
+Copyright (c) 2021 majid hooshiyar
+The upstream library source is not modified. CSS is included locally and the JS bundle is loaded from the package CDN.
+
+4) Vazirmatn
+Loaded from Google Fonts at runtime.
+
+5) hls.js
+Loaded from jsDelivr at runtime for HLS playback in browsers that need MSE.

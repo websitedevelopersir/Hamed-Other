@@ -1,0 +1,9 @@
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(app|database|storage|routes)/ - [F,L]
+RewriteRule ^config\.php$ - [F,L]
+</IfModule>
+<FilesMatch "^(\.env|composer\.(json|lock)|config\.php)$">
+  Require all denied
+</FilesMatch>
