@@ -64,6 +64,7 @@ class PlayerResolver
             return $override;
         }
 
+        // Video advertisement campaigns are a real playout source, not only admin records.
         $ad = $this->activeAdvertisement($channel, $clock);
         if ($ad) {
             return $ad;
@@ -331,6 +332,7 @@ class PlayerResolver
             return null;
         }
 
+        // daily_end is an eligibility boundary, not a command to loop one ad for the whole window.
         if (!empty($ad['daily_end'])) {
             $dailyEnd = $this->localDateTimeToUnix($clock['date'] . ' ' . $ad['daily_end'], $clock['timezone']);
             if ($startUnix >= $dailyEnd) {
