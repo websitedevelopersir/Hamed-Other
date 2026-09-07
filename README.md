@@ -1,15 +1,17 @@
 # Hamed Other
 
-این Repository آرشیو توسعه پروژه **Hamed Other** است.
+این Repository آرشیو توسعه چت‌های پروژه **Hamed Other** است.
 
-هر گفتگوی توسعه در پوشه مستقل زیر `chats/` نگهداری می‌شود تا در توسعه‌های بعدی بتوان وضعیت دقیق همان گفتگو، آخرین کد، تصمیم‌ها، باگ‌ها و موارد باز را بدون اتکا به حافظه بازسازی کرد.
+هر گفتگوی توسعه با **نام واقعی چت** در پوشه مستقل زیر `chats/` نگهداری می‌شود. شناسه و لینک اصلی گفتگو داخل README همان پوشه ثبت می‌شود، اما نام پوشه از Chat ID ساخته نمی‌شود.
 
-## ساختار
+## ساختار هر چت
 
 ```text
 chats/
-└── <chat-id>/
+└── <نام واقعی چت>/
     ├── README.md
+    ├── VERSION
+    ├── CHANGELOG.md
     ├── context/
     │   ├── CHAT_CONTEXT.md
     │   └── DECISIONS.md
@@ -18,14 +20,17 @@ chats/
     │   └── KNOWN_ISSUES.md
     ├── logs/
     │   └── DEVELOPMENT_LOG.md
-    └── source/
-        └── latest-known.html
+    ├── source/
+    │   └── SOURCE_INDEX.md
+    └── release/
+        └── <آخرین فایل واقعی ZIP>
 ```
 
 ## قانون توسعه
 
-1. قبل از هر تغییر، فایل‌های Context و Development Guide همان چت خوانده شوند.
-2. `source/` باید آخرین مبنای توسعه همان گفتگو باشد.
-3. هر تغییر جدید در `logs/DEVELOPMENT_LOG.md` ثبت شود.
-4. اگر نسخه/فایل جدید ساخته شد، آخرین فایل مرجع جایگزین شود و وضعیت قبلی در Git History باقی بماند.
-5. رمزها، API Keyها، توکن‌ها، اطلاعات اتصال و Credential واقعی هرگز Commit نشوند.
+1. قبل از هر تغییر، Context، Decisions و Development Guide همان چت خوانده شود.
+2. فایل موجود در `release/` آخرین Artifact واقعی و مرجع همان چت است.
+3. اگر سورس داخل ZIP باشد، `source/SOURCE_INDEX.md` ساختار و فایل مبنا را مشخص می‌کند.
+4. هر تغییر در `CHANGELOG.md` و `logs/DEVELOPMENT_LOG.md` ثبت شود.
+5. نسخه‌های قدیمی در Git History باقی می‌مانند و آخرین نسخه جایگزین مبنای جاری می‌شود.
+6. رمز، API Key، Token، Credential و تنظیمات حساس واقعی هرگز Commit نشوند.
