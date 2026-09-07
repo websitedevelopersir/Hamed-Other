@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS otp_codes (
   INDEX idx_otp_mobile (mobile), INDEX idx_otp_exp (expires_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 CREATE TABLE IF NOT EXISTS login_attempts (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   identifier_hash CHAR(64) NOT NULL,
